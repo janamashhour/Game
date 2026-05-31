@@ -1,0 +1,13 @@
+.preloader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    height: 100vh;
+    background-image: url(../../assets/imgs/paperTexture.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: var(--primary_bg);
+}
