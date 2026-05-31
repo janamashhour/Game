@@ -7,3 +7,13 @@
     --hover: #6E0E18;
     --glow: #D94B5C;
 }
+
+@font-face {
+    font-family: "CattleTrail";
+    src: url(../src/assets/fonts/CattleTrailJNL.otf);
+}
+
+@font-face {
+    font-family: "SpecialElite";
+    src: url(../src/assets/fonts/SpecialElite.ttf);
+}
