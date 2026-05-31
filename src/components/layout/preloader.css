@@ -11,3 +11,17 @@
     background-size: cover;
     background-color: var(--primary_bg);
 }
+
+.fadeIn {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

@@ -9,7 +9,7 @@ const Intro = () => {
     useEffect(() => {
       const timer = setTimeout(() => {
         setLoading(false)
-      }, 5000)
+      }, 3000)
   
       return () => clearTimeout(timer)
     }, [])
@@ -18,6 +18,7 @@ const Intro = () => {
       return <Preloader />
     }
     return ( <>
+    
     
     </> );
 }

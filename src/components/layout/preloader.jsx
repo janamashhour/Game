@@ -18,7 +18,7 @@ const Preloader = () => {
         variableSpeedMin={60}
         variableSpeedMax={120}
         cursorBlinkDuration={0.5} />
-        <div className="logo">
+        <div className="logo fadeIn">
             <img src={logo} alt="decorative text that says Red Echo" />
         </div>
     </div>
