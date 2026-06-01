@@ -1,0 +1,36 @@
+.splash {
+    background-image: url(../assets/imgs/splashBg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--primary_bg);
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+}
+
+.splashLogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    font-family: "SpecialElite";
+    color: var(--primary_text);
+}
+
+.splashLogo h2 {
+    font-size: 50px;
+}
+
+.splashBtns {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}

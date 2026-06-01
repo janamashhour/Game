@@ -1,0 +1,128 @@
+.settings-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(5px);
+    z-index: 60;
+    animation: introFadeIn 0.2s ease;
+}
+
+.settings-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2.5rem 3.5rem;
+    min-width: 400px;
+    height: 470px;
+    background-image: url(../../assets/imgs/overlayBg.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.settings-title {
+    font-family: "CattleTrail";
+    letter-spacing: 4%;
+    font-weight: 100;
+    color: var(--primary_bg);
+    font-size: 40px;
+    margin-bottom: 0.5rem;
+}
+
+.settings-icons-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.settings-icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    background-image: url(../../assets/imgs/settingsControlsBg.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.settings-icon-btn img {
+    width: fit-content;
+    height: 24px;
+}
+
+.settings-language-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.settings-language-label {
+    font-family: "CattleTrail";
+    font-size: 24px;
+    color: var(--primary_text);
+    min-width: 120px;
+    text-align: center;
+    background-image: url(../../assets/imgs/langBtn.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    padding: 28px;
+}
+
+.settings-arrow-btn {
+    font-family: "CattleTrail";
+    font-size: 20px;
+    color: var(--primary_text);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.15s;
+}
+
+.settings-arrow-btn:hover {
+    color: var(--primary_bg);
+}
+
+.settings-back-btn {
+    font-family: "CattleTrail";
+    width: 100%;
+    font-size: 24px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 20px;
+    text-align: center;
+    color: var(--primary_text);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.15s;
+    background-image: url(../../assets/imgs/buttonBg.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: all 200ms ease;
+}
+
+.settings-back-btn:hover {
+    background-image: url(../../assets/imgs/buttonHover.svg);
+    color: var(--primary_bg);
+}
+
+.settings-back-btn:hover {
+    color: var(--primary_bg);
+}

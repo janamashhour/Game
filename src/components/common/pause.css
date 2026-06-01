@@ -1,0 +1,62 @@
+.intro-pause-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(5px);
+    z-index: 50;
+    animation: introFadeIn 0.2s ease;
+}
+
+.intro-pause-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2.5rem 3.5rem;
+    min-width: 400px;
+    height: 470px;
+    background-image: url(../../assets/imgs/overlayBg.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+}
+  
+.intro-pause-title {
+    font-family: "CattleTrail";
+    letter-spacing: 4%;
+    font-weight: 100;
+    color: var(--primary_bg);
+    font-size: 40px;
+    margin-bottom: 0.5rem;
+}
+
+.intro-pause-btn {
+    font-family: "CattleTrail";
+    width: 100%;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 28px;
+    font-size: 24px;
+    text-align: center;
+    color: var(--primary_text);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+    background-image: url(../../assets/imgs/buttonBg.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: all 200ms ease;
+}
+
+.intro-pause-btn:hover {
+    background-image: url(../../assets/imgs/buttonHover.svg);
+    color: var(--primary_bg);
+}

@@ -1,0 +1,144 @@
+.intro-scene {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+  
+.intro-bg {
+    position: absolute;
+    inset: 0;
+    background-color: #0a0806;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.45);
+    transition: background-image 0.8s ease;
+}
+
+.intro-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse at 50% 50%,
+      transparent 35%,
+      rgba(0, 0, 0, 0.75) 100%
+    );
+    pointer-events: none;
+}
+
+.introBtns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.intro-hud-btn {
+    position: absolute;
+    background: none;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.intro-hud-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.intro-hud-btn--pause {
+    top: 2rem;
+    left: 2rem;
+    font-size: 1rem;
+}
+
+.intro-hud-btn--skip {
+    top: 2rem;
+    right: 2rem;
+    font-size: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: "CattleTrail";
+    color: var(--primary_text);
+}
+
+.intro-hud-btn--skip:hover {
+    color: #c1bfb9;
+}
+
+.intro-narration-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 80px 40px;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.95) 0%,
+      rgba(0, 0, 0, 0.6)  70%,
+      transparent         100%
+    ); 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.intro-counter {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--active);
+    font-family: "SpecialElite";
+}
+
+@keyframes introFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+  
+.intro-narration-text {
+    font-size: clamp(1rem, 2.2vw, 1.4rem);
+    line-height: 1.65;
+    color: var(--primary_text);
+    max-width: 70ch;
+    animation: introFadeIn 0.7s ease forwards;
+    font-family: "SpecialElite";
+}
+
+.intro-next-btn {
+    letter-spacing: 0.18em;
+    color: var(--primary_text);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: "CattleTrail";
+    font-size: 36px;
+}
+
+.intro-next-btn:hover:not(:disabled) {
+    color: var(--primary_text);
+}
+
+.intro-next-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.flip {
+    transform: scaleX(-1);
+}
+
+.introNarration {
+    display: flex;
+    flex-direction: column;
+}

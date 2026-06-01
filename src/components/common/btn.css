@@ -1,0 +1,41 @@
+.splashBtn {
+    width: 220px;
+    height: 80px;
+    font-size: 34px;
+    background-image: url(../../assets/imgs/buttonBg.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: var(--primary_text);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: "CattleTrail";
+    transition: all 200ms ease;
+}
+
+.splashBtn:hover {
+    background-image: url(../../assets/imgs/buttonHover.svg);
+    color: var(--primary_bg);
+}
+
+.pauseBtn {
+    width: 200px;
+    height: 80px;
+    font-size: 28px;
+    background-image: url(../../assets/imgs/buttonBg.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: var(--primary_text);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: "CattleTrail";
+    transition: all 200ms ease;
+}
+
+.pauseBtn:hover {
+    background-image: url(../../assets/imgs/buttonHover.svg);
+    color: var(--primary_bg);
+}
