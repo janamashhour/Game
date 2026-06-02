@@ -12,7 +12,7 @@ function NarrationText({ text }) {
   return <p className="intro-narration-text">{text}</p>;
 }
 
-const Intro = () => {
+const Intro = ({ isMusicMuted, onToggleMusic }) => {
   const navigate = useNavigate();
   const audioRef = useRef(null);
 
@@ -20,18 +20,14 @@ const Intro = () => {
   const [slideIndex,    setSlideIndex]     = useState(0);
   const [isPaused,      setIsPaused]       = useState(false);
   const [showSettings,  setShowSettings]   = useState(false);
-  const [isMusicMuted,  setIsMusicMuted]   = useState(false);
   const [isSoundMuted,  setIsSoundMuted]   = useState(false);
 
   const currentSlide = introSlides[slideIndex];
   const isLastSlide  = slideIndex === introSlides.length - 1;
 
-  // ── Settings handlers ────────────────────────────────────────
   const handleOpenSettings  = () => setShowSettings(true);
   const handleCloseSettings = () => setShowSettings(false);
-  const handleToggleMusic   = () => setIsMusicMuted(m => !m); // wire to your music player later
 
-  // Toggles sound AND immediately applies it to the playing audio
   const handleToggleSound = () => {
     setIsSoundMuted(prev => {
       const next = !prev;
@@ -40,13 +36,11 @@ const Intro = () => {
     });
   };
 
-  // ── Preloader timer ──────────────────────────────────────────
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 3000);
     return () => clearTimeout(timer);
   }, []);
 
-  // ── Play audio on slide change ───────────────────────────────
   useEffect(() => {
     if (loading)              return;
     if (isPaused)             return;
@@ -58,14 +52,13 @@ const Intro = () => {
     }
 
     const audio = new Audio(currentSlide.audio);
-    audio.muted  = isSoundMuted; // ✅ uses the correct mute state
+    audio.muted  = isSoundMuted;
     audioRef.current = audio;
     audio.play().catch(() => {});
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slideIndex, loading]);
 
-  // ── Navigation ───────────────────────────────────────────────
   const goHome = useCallback(() => {
     if (audioRef.current) {
       audioRef.current.pause();
@@ -74,7 +67,6 @@ const Intro = () => {
     navigate('/home');
   }, [navigate]);
 
-  // ── Slide controls ───────────────────────────────────────────
   const handleNext = useCallback(() => {
     if (isPaused)    return;
     if (isLastSlide) { goHome(); return; }
@@ -86,7 +78,6 @@ const Intro = () => {
     setSlideIndex(i => i + 1);
   }, [isPaused, isLastSlide, goHome]);
 
-  // ── Pause controls ───────────────────────────────────────────
   const handlePause = useCallback(() => {
     audioRef.current?.pause();
     setIsPaused(true);
@@ -94,11 +85,10 @@ const Intro = () => {
 
   const handleResume = useCallback(() => {
     setIsPaused(false);
-    setShowSettings(false); // ✅ always close settings when resuming
+    setShowSettings(false);
     audioRef.current?.play().catch(() => {});
   }, []);
 
-  // ── Keyboard shortcuts ───────────────────────────────────────
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.code === 'Space')  { e.preventDefault(); handleNext(); }
@@ -108,7 +98,6 @@ const Intro = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [handleNext, handlePause, handleResume, isPaused]);
 
-  // ── Render ───────────────────────────────────────────────────
   if (loading) return <Preloader />;
 
   return (
@@ -157,7 +146,6 @@ const Intro = () => {
         </button>
       </div>
 
-      {/* PauseMenu — shown when paused and settings are closed */}
       {isPaused && !showSettings && (
         <PauseMenu
           onResume={handleResume}
@@ -166,15 +154,14 @@ const Intro = () => {
         />
       )}
 
-      {/* SettingsOverlay — shown on top when settings are open */}
       {isPaused && showSettings && (
         <SettingsOverlay
-          isMusicMuted={isMusicMuted}
-          isSoundMuted={isSoundMuted}
-          onToggleMusic={handleToggleMusic}
-          onToggleSound={handleToggleSound}
-          onBack={handleCloseSettings}
-        />
+        isMusicMuted={isMusicMuted}
+        isSoundMuted={isSoundMuted}
+        onToggleMusic={onToggleMusic}
+        onToggleSound={handleToggleSound}
+        onBack={handleCloseSettings}
+      />
       )}
 
     </div>

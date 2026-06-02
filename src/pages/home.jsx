@@ -2,17 +2,16 @@ import React from 'react';
 import { useState } from 'react';
 import './home.css';
 import logo from '../assets/imgs/logo.svg';
-import Btn from '../components/common/btn';
+import '../components/common/btn.css';
 import SettingsOverlay from '../components/common/settingsOverlay';
+import { Link } from 'react-router';
 
-const Home = () => {
+const Home = ({ isMusicMuted, onToggleMusic }) => {
   const [showSettings,  setShowSettings]  = useState(false);
-  const [isMusicMuted,  setIsMusicMuted]  = useState(false);
   const [isSoundMuted,  setIsSoundMuted]  = useState(false);
 
   const handleOpenSettings  = () => setShowSettings(true);
   const handleCloseSettings = () => setShowSettings(false);
-  const handleToggleMusic   = () => setIsMusicMuted(m => !m);
   const handleToggleSound   = () => setIsSoundMuted(s => !s);
 
   return (
@@ -23,9 +22,11 @@ const Home = () => {
           <img src={logo} alt="Red Echo decorative text" />
         </div>
         <div className="splashBtns">
-        <button className="splashBtn">
-            New Game
-          </button>
+          <Link to='/levelMap'>
+            <button className="splashBtn">
+                New Game
+              </button>
+          </Link>
           <button className="splashBtn" onClick={handleOpenSettings}>
             SETTINGS
           </button>
@@ -36,7 +37,7 @@ const Home = () => {
         <SettingsOverlay
           isMusicMuted={isMusicMuted}
           isSoundMuted={isSoundMuted}
-          onToggleMusic={handleToggleMusic}
+          onToggleMusic={onToggleMusic}
           onToggleSound={handleToggleSound}
           onBack={handleCloseSettings}
         />

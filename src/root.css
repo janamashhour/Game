@@ -23,3 +23,7 @@
     font-family: "SpecialElite";
     src: url(../src/assets/fonts/SpecialElite.ttf);
 }
+
+.link {
+    text-decoration: none;
+}
