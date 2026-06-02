@@ -82,13 +82,13 @@
       transparent         100%
     ); 
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
     gap: 1rem;
 }
 
 .intro-counter {
-    font-size: 0.65rem;
+    font-size: 15px;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--active);
