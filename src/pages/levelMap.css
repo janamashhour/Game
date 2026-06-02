@@ -32,9 +32,8 @@
 .levelMap h2 {
     align-self: center;
     color: var(--primary_bg);
-    -webkit-text-stroke-color: #9c9a96;
-    -webkit-text-stroke-width: 0.1px;
     font-size: 56px;
+    font-weight: 400;
     font-family: "CattleTrail";
 }
 
