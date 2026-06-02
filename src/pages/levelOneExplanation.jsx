@@ -82,7 +82,7 @@ const LevelOneExplanation = ({
           className="settingsBtnLevelOne"
           onClick={() => setShowSettings(true)}
         >
-          <img src={settingsIcon} alt="Settings" />
+          <img className="settingsIcon" src={settingsIcon} alt="Settings" />
         </button>
         <div className="dialogue">
             <img className="dialogueCharacter" src={lucas} alt="main character" />
@@ -95,12 +95,12 @@ const LevelOneExplanation = ({
         {currentDialogue === dialogues.length - 1 ? (
           <Btn
             btnText="Start"
-            btnStyle="splashBtn"
+            btnStyle="splashBtn btnGlow"
             btnLink="/levelOne"
           />
         ) : (
           <button
-            className="splashBtn"
+            className="splashBtn btnGlow"
             onClick={nextDialogue}
             disabled={!audioFinished}
           >

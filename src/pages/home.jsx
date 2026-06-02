@@ -23,7 +23,7 @@ const Home = ({ isMusicMuted, onToggleMusic }) => {
         </div>
         <div className="splashBtns">
           <Link to='/levelMap'>
-            <button className="splashBtn">
+            <button className="splashBtn btnGlow">
                 New Game
               </button>
           </Link>

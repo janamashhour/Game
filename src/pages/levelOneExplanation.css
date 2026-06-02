@@ -39,7 +39,6 @@
     gap: 24px;
     padding: 28px 48px;
     color: var(--primary_text);
-    filter: drop-shadow(0 0 21.689px #EDEBE6);
     animation: glowPulse 2s ease-in-out infinite;
 }
 
@@ -48,8 +47,8 @@
         filter: drop-shadow(0 0 10px #EDEBE6);
     }
     50% {
-        filter: drop-shadow(0 0 30px #EDEBE6)
-                drop-shadow(0 0 32px #EDEBE6);
+        filter: drop-shadow(0 0 10px #EDEBE6)
+                drop-shadow(0 0 10px #EDEBE6);
     }
     100% {
         filter: drop-shadow(0 0 10px #EDEBE6);
@@ -71,4 +70,9 @@
     font-size: 18px;
     font-family: "SpecialElite";
     font-weight: 400;
+}
+
+.settingsIcon {
+    width: 70px;
+    height: 70px;
 }

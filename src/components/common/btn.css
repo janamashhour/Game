@@ -1,5 +1,5 @@
 .splashBtn {
-    width: 220px;
+    width: 240px;
     height: 80px;
     font-size: 34px;
     background-image: url(../../assets/imgs/buttonBg.svg);
@@ -33,6 +33,22 @@
     cursor: pointer;
     font-family: "CattleTrail";
     transition: all 200ms ease;
+}
+
+.btnGlow {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 2px #EDEBE6);
+    }
+
+    50% {
+        transform: scale(1.03);
+        filter: drop-shadow(0 0 4px #EDEBE6);
+    }
 }
 
 .pauseBtn:hover {
