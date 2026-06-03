@@ -7,10 +7,14 @@ import MainMenu from './pages/mainMenu';
 import LevelOneExplanation from './pages/levelOneExplanation';
 import bgMusic from './assets/audios/bgMusic.mp4';
 import Preloader from './components/layout/preloader';
+import clickSound from './assets/audios/buttonClick.mp4';
 
 const music = new Audio(bgMusic);
 music.loop   = true;
 music.volume = 0.4;
+
+const click = new Audio(clickSound);
+click.volume = 0.6;
 
 const Path = () => {
   const [started,      setStarted]      = useState(false);
@@ -20,6 +24,18 @@ const Path = () => {
     music.play().catch(() => {});
     setStarted(true);
   };
+
+  useEffect(() => {
+    const handleButtonClick = (e) => {
+      if (e.target.closest('button')) {
+        click.currentTime = 0;
+        click.play().catch(() => {});
+      }
+    };
+
+    window.addEventListener('click', handleButtonClick);
+    return () => window.removeEventListener('click', handleButtonClick);
+  }, []);
 
   useEffect(() => {
     music.muted = isMusicMuted;
