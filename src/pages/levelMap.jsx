@@ -6,6 +6,7 @@ import './levelMap.css';
 import Btn from '../components/common/btn.jsx';
 import lock from '../assets/icons/lockIcon.svg';
 import { Link } from 'react-router-dom';
+import BackButton from '../components/common/BackBtn.jsx';
 
 const LevelMap = ({ isMusicMuted, onToggleMusic }) => {
       const [showSettings,  setShowSettings]  = useState(false);
@@ -32,7 +33,10 @@ const LevelMap = ({ isMusicMuted, onToggleMusic }) => {
                 <img src={lock} alt="lock icon" />
               </button>
         </div>
-          <Btn btnText="Start" btnStyle="splashBtn btnGlow" btnLink="/levelOneExplanation" />
+        <div className="dialogueBtns">
+            <BackButton />
+            <Btn btnText="Start" btnStyle="splashBtn btnGlow" btnLink="/levelOneExplanation" />
+        </div>
     </div>
 
 

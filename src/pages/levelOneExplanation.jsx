@@ -6,6 +6,7 @@ import level1explanation1 from "../assets/audios/level1/levelexplanation1-1.mp4"
 import level1explanation2 from "../assets/audios/level1/levelexplanation1-2.mp4";
 import level1explanation3 from "../assets/audios/level1/levelexplanation1-3.mp4";
 import lucas from '../assets/imgs/lucas.png';
+import BackButton from "../components/common/BackBtn";
 
 import "./levelOneExplanation.css";
 
@@ -93,19 +94,25 @@ const LevelOneExplanation = ({
         </div>
 
         {currentDialogue === dialogues.length - 1 ? (
-          <Btn
-            btnText="Start"
-            btnStyle="splashBtn btnGlow"
-            btnLink="/levelOne"
-          />
+          <div className="dialogueBtns">
+            <BackButton />
+            <Btn
+              btnText="Start"
+              btnStyle="splashBtn btnGlow"
+              btnLink="/levelOne"
+            />
+          </div>
         ) : (
-          <button
-            className="splashBtn btnGlow"
-            onClick={nextDialogue}
-            disabled={!audioFinished}
-          >
-            Next
-          </button>
+          <div className="dialogueBtns">
+            <BackButton />
+            <button
+              className="splashBtn btnGlow"
+              onClick={nextDialogue}
+              disabled={!audioFinished}
+            >
+              Next
+            </button>
+          </div>
         )}
       </div>
 
