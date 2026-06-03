@@ -70,6 +70,7 @@
 .openLevel:hover {
     background-image: url(../assets/imgs/levelBgHover.png);
     color: var(--primary_text);
+    scale: 1.1;
 }
 
 .lockedLevel {
