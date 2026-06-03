@@ -17,6 +17,16 @@
     animation: fadeIn 1s ease forwards 1s;
 }
 
+.click-to-start {
+    color: var(--active);
+    font-family: "SpecialElite";
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 50px;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;

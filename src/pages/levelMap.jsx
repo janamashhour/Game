@@ -32,7 +32,7 @@ const LevelMap = ({ isMusicMuted, onToggleMusic }) => {
                 <img src={lock} alt="lock icon" />
               </button>
         </div>
-          <Btn btnText="Next" btnStyle="splashBtn btnGlow" btnLink="/levelOneExplanation" />
+          <Btn btnText="Start" btnStyle="splashBtn btnGlow" btnLink="/levelOneExplanation" />
     </div>
 
 

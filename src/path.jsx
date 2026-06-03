@@ -4,25 +4,22 @@ import Intro from './pages/intro';
 import Home from './pages/home';
 import LevelMap from './pages/levelMap';
 import MainMenu from './pages/mainMenu';
-import bgMusic from './assets/audios/bgMusic.mp4';
 import LevelOneExplanation from './pages/levelOneExplanation';
+import bgMusic from './assets/audios/bgMusic.mp4';
+import Preloader from './components/layout/preloader';
 
 const music = new Audio(bgMusic);
 music.loop   = true;
 music.volume = 0.4;
 
 const Path = () => {
+  const [started,      setStarted]      = useState(false);
   const [isMusicMuted, setIsMusicMuted] = useState(false);
 
-  useEffect(() => {
-    const startMusic = () => {
-      music.play().catch(() => {});
-      window.removeEventListener('click', startMusic);
-    };
-
-    window.addEventListener('click', startMusic);
-    return () => window.removeEventListener('click', startMusic);
-  }, []);
+  const handleDone = () => {
+    music.play().catch(() => {});
+    setStarted(true);
+  };
 
   useEffect(() => {
     music.muted = isMusicMuted;
@@ -30,18 +27,17 @@ const Path = () => {
 
   const handleToggleMusic = () => setIsMusicMuted(m => !m);
 
-  const musicProps = {
-    isMusicMuted,
-    onToggleMusic: handleToggleMusic,
-  };
+  const musicProps = { isMusicMuted, onToggleMusic: handleToggleMusic };
+
+  if (!started) return <Preloader onDone={handleDone} />;
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/'         element={<Intro    {...musicProps} />} />
-        <Route path='/home'     element={<Home     {...musicProps} />} />
-        <Route path='/levelMap' element={<LevelMap {...musicProps} />} />
-        <Route path='/mainMenu' element={<MainMenu {...musicProps} />} />
+        <Route path='/'                    element={<Intro               {...musicProps} />} />
+        <Route path='/home'                element={<Home                {...musicProps} />} />
+        <Route path='/levelMap'            element={<LevelMap            {...musicProps} />} />
+        <Route path='/mainMenu'            element={<MainMenu            {...musicProps} />} />
         <Route path='/levelOneExplanation' element={<LevelOneExplanation {...musicProps} />} />
       </Routes>
     </BrowserRouter>
