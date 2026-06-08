@@ -41,7 +41,7 @@ const LevelMap = ({ isMusicMuted, onToggleMusic }) => {
 
 
 {showSettings && (
-        <SettingsOverlay
+        <SettingsOverlay 
           isMusicMuted={isMusicMuted}
           isSoundMuted={isSoundMuted}
           onToggleMusic={onToggleMusic}
