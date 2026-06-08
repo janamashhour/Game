@@ -1,4 +1,5 @@
 .levelOne {
+    position: relative;
     background-image: url(../assets/imgs/levelOneBg.jpg);
     background-position: center;
     background-repeat: no-repeat;
@@ -6,16 +7,269 @@
     width: 100%;
     height: 100vh;
     padding: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.levelOneHeader {
+    display: flex;
+    justify-content: end;
+    align-items: start;
+    width: 100%;
 }
 
 .cluebookIcon {
     background-color: transparent;
     border: none;
     width: 120px;
+    cursor: pointer;
+    align-self: flex-end;
+    transition: all 200ms ease;
 }
 
-.levelOneHeader {
+.cluebookIcon:hover {
+    background-color: transparent;
+    filter: drop-shadow(0 2px 10px rgba(255, 255, 255, 0.45));
+}
+
+.levelOnePaper {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem 4rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-width: 700px;
+}
+
+.decodeTitle {
+    font-family: "CattleTrail";
+    font-size: 2rem;
+    color: var(--primary_bg);
+    text-align: center;
+}
+
+.morseGrid {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #222;
+}
+
+.morseRow {
+    display: flex;
+    flex-direction: row;
+    font-family: "SpecialElite";
+}
+
+.morseCell {
+    width: 80px;
+    height: 60px;
+    border: 1px solid #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-family: monospace;
+    color: #222;
+    background: transparent;
+    transition: background 0.2s;
+    font-family: "SpecialElite";
+}
+
+.morseCell--active {
+    background: rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+
+.morseCell--answer {
+    font-family: "CattleTrail";
+    font-size: 1.6rem;
+    color: #222;
+    min-height: 60px;
+}
+
+.letterChoices {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.letterBtn {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    background: #1a1a1a;
+    color: #fff;
+    font-family: "CattleTrail";
+    font-size: 2rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.1s ease, background 0.2s ease;
+}
+
+.letterBtn:hover:not(:disabled) {
+    background: #333;
+    transform: scale(1.08);
+}
+
+.letterBtn:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.failOverlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 50;
+    cursor: pointer;
+    animation: fadeIn 0.2s ease;
+}
+
+.failCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2.5rem 3rem;
+    min-width: 320px;
+    text-align: center;
+    background-image: url(../assets/imgs/overlayBg.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+.failTitle {
+    font-family: "CattleTrail";
+    font-size: 2rem;
+    color: var(--primary_bg);
+}
+
+.failText, .failHint {
+    font-family: "CattleTrail";
+    color: var(--primary_bg);
+}
+
+.failText { font-size: 1rem; }
+
+.failHint {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    opacity: 0.6;
+    text-transform: uppercase;
+}
+
+.successOverlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    z-index: 50;
+    animation: fadeIn 0.3s ease;
+}
+
+.successCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 3rem 4rem;
+    text-align: center;
+    background-image: url(../assets/imgs/overlayBg.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.successTitle {
+    font-family: "CattleTrail";
+    font-size: 2.5rem;
+    color: var(--primary_bg);
+}
+
+.successWord {
+    font-family: "CattleTrail";
+    font-size: 3rem;
+    color: var(--primary_bg);
+    letter-spacing: 0.3em;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.cluebookOverlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    z-index: 60;
+    animation: fadeIn 0.25s ease;
+    cursor: pointer;
+}
+
+.cluebookModal {
+    position: relative;
+    cursor: default;
+}
+
+.cluebookImage {
+    max-height: 85vh;
+    max-width: 90vw;
+    object-fit: contain;
+}
+
+.cluebookPage {
+    background-image: url(../assets/imgs/cluebookPage.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     width: 100%;
-    justify-content: flex-end;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 32px;
+    padding-top: 12px;
+}
+
+.cluebookClose {
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    transition: background 0.2s;
+}
+
+.cluebookClose:hover {
+    background: #c0392b;
 }

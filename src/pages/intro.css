@@ -51,6 +51,11 @@
     top: 2rem;
     left: 2rem;
     font-size: 1rem;
+    transition: all 200ms ease;
+}
+
+.intro-hud-btn--pause:hover {
+    filter: drop-shadow(0 2px 10px rgba(255, 255, 255, 0.45));
 }
 
 .intro-hud-btn--skip {

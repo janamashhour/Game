@@ -5,10 +5,10 @@ import Home from './pages/home';
 import LevelMap from './pages/levelMap';
 import MainMenu from './pages/mainMenu';
 import LevelOneExplanation from './pages/levelOneExplanation';
+import LevelOne from './pages/levelOne';
 import bgMusic from './assets/audios/bgMusic.mp4';
 import Preloader from './components/layout/preloader';
 import clickSound from './assets/audios/buttonClick.mp4';
-import LevelOne from './pages/levelOne';
 
 const music = new Audio(bgMusic);
 music.loop   = true;
@@ -18,11 +18,14 @@ const click = new Audio(clickSound);
 click.volume = 0.6;
 
 const Path = () => {
-  const [started,      setStarted]      = useState(false);
+  const [started, setStarted] = useState(
+    () => localStorage.getItem('gameStarted') === 'true'
+  );
   const [isMusicMuted, setIsMusicMuted] = useState(false);
 
   const handleDone = () => {
     music.play().catch(() => {});
+    localStorage.setItem('gameStarted', 'true');
     setStarted(true);
   };
 
@@ -33,7 +36,6 @@ const Path = () => {
         click.play().catch(() => {});
       }
     };
-
     window.addEventListener('click', handleButtonClick);
     return () => window.removeEventListener('click', handleButtonClick);
   }, []);
@@ -43,7 +45,6 @@ const Path = () => {
   }, [isMusicMuted]);
 
   const handleToggleMusic = () => setIsMusicMuted(m => !m);
-
   const musicProps = { isMusicMuted, onToggleMusic: handleToggleMusic };
 
   if (!started) return <Preloader onDone={handleDone} />;
@@ -56,7 +57,7 @@ const Path = () => {
         <Route path='/levelMap'            element={<LevelMap            {...musicProps} />} />
         <Route path='/mainMenu'            element={<MainMenu            {...musicProps} />} />
         <Route path='/levelOneExplanation' element={<LevelOneExplanation {...musicProps} />} />
-        <Route path='/levelOne' element={<LevelOne {...musicProps} />} />
+        <Route path='/levelOne'            element={<LevelOne            {...musicProps} />} />
       </Routes>
     </BrowserRouter>
   );
