@@ -166,7 +166,14 @@ const LevelOne = ({ isMusicMuted, onToggleMusic }) => {
 
   if (showSuccess) return (
     <div className="successPage">
-      <Header />
+      <button
+        className="intro-hud-btn intro-hud-btn--pause"
+        onClick={handlePause}
+        disabled={isPaused}
+        aria-label="Pause"
+      >
+        <img src={pause} alt="pause icon" />
+      </button>
       <div className="successPaper">
         <h2 className="successTitle">DECODED</h2>
         <div className="successLetterRow">
@@ -175,7 +182,7 @@ const LevelOne = ({ isMusicMuted, onToggleMusic }) => {
           ))}
         </div>
         <p className="successMessage">The message points to a warehouse.</p>
-        <button className="splashBtn" onClick={() => navigate('/home')}>
+        <button className="splashBtn" onClick={() => navigate('/levelMap')}>
           NEXT
         </button>
       </div>

@@ -208,13 +208,13 @@
 }
 
 .successTitle {
-    font-family: "CattleTrail";
-    font-size: 2.5rem;
+    font-family: "SpecialElite";
+    font-size: 32px;
     color: var(--primary_bg);
 }
 
 .successWord {
-    font-family: "CattleTrail";
+    font-family: "SpecialElite";
     font-size: 3rem;
     color: var(--primary_bg);
     letter-spacing: 0.3em;
@@ -371,4 +371,72 @@
     font-size: 20px;
     color: #c0392b;
     letter-spacing: 0.1em;
+}
+
+.successPage {
+    background-image: url(../assets/imgs/levelOneBg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.successPaper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.successPaper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    padding: 5rem 6rem;
+    max-width: 900px;
+}
+
+.successTitle {
+    font-family: "SpecialElite";
+    font-size: 32px;
+    color: var(--primary_bg);
+    letter-spacing: 0.2em;
+}
+
+.successLetterRow {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid #222;
+}
+
+.successLetterBox {
+    width: 80px;
+    height: 70px;
+    border-right: 1px solid #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "SpecialElite";
+    font-size: 1.8rem;
+    color: #222;
+    background: transparent;
+}
+
+.successLetterBox:last-child {
+    border-right: none;
+}
+
+.successMessage {
+    font-family: "SpecialElite";
+    font-size: 1.2rem;
+    color: #c0392b;
+    font-style: italic;
 }
