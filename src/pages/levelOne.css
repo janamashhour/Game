@@ -99,21 +99,25 @@
 }
 
 .letterBtn {
-    width: 80px;
-    height: 80px;
-    border-radius: 12px;
-    background: #1a1a1a;
-    color: #fff;
+    width: 90px;
+    height: 82px;
+    color: var(--primary_text);
     font-family: "CattleTrail";
     font-size: 2rem;
     border: none;
     cursor: pointer;
+    background-color: transparent;
     transition: transform 0.1s ease, background 0.2s ease;
+    filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.45));
+    background-image: url(../assets/imgs/letterBtn.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .letterBtn:hover:not(:disabled) {
-    background: #333;
     transform: scale(1.08);
+    filter: none;
 }
 
 .letterBtn:disabled {
@@ -138,35 +142,44 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 1rem;
-    padding: 2.5rem 3rem;
-    min-width: 320px;
+    min-width: 502px;
+    min-height: 340px;
     text-align: center;
-    background-image: url(../assets/imgs/overlayBg.svg);
+    background-image: url(../assets/imgs/failOverlayBg.svg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    pointer-events: none;
+    pointer-events: all;
+}
+
+.failCard2 {
+    background-image: url(../assets/imgs/overlayBg.svg);
 }
 
 .failTitle {
     font-family: "CattleTrail";
-    font-size: 2rem;
-    color: var(--primary_bg);
+    font-size: 40px;
+    color: var(--primary_text);
+    font-weight: 400;
 }
 
 .failText, .failHint {
-    font-family: "CattleTrail";
-    color: var(--primary_bg);
+    font-family: "SpecialElite";
+    font-size: 40px;
+    color: var(--primary_text);
+    font-weight: 400;
 }
 
-.failText { font-size: 1rem; }
+.failText {
+    font-size: 22px;
+}
 
 .failHint {
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
+    font-size: 16px;
     opacity: 0.6;
-    text-transform: uppercase;
+    text-transform: lowercase;
 }
 
 .successOverlay {
@@ -272,4 +285,90 @@
 
 .cluebookClose:hover {
     background: #c0392b;
+}
+
+.levelOneHud {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0 1.5rem;
+    gap: 600px;
+    position: absolute;
+    top: 5rem;
+}
+
+.triesRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
+    background-image: url(../assets/imgs/timerBg.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 20px 20px;
+}
+
+.tryIcon {
+    font-size: 1.4rem;
+    color: var(--primary_text);
+    font-family: "SpecialElite";
+    opacity: 0.3;
+    transition: all 0.2s ease;
+}
+
+.tryIcon--used {
+    opacity: 1;
+    color: #c0392b;
+}
+
+.timer {
+    font-family: "CattleTrail";
+    font-size: 2rem;
+    color: var(--primary_text);
+    background-image: url(../assets/imgs/timerBg.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 10px 30px;
+    font-weight: 400;
+    transition: color 0.3s ease, font-size 0.3s ease;
+    text-align: center;
+}
+
+.timer--warning {
+    color: #c0392b;
+    font-size: 2.8rem;
+    padding: 10px 40px;
+    animation: timerPulse 0.6s ease-in-out infinite;
+}
+
+@keyframes timerPulse {
+    0%, 100% { transform: scale(1);    }
+    50%       { transform: scale(1.15); }
+}
+
+.failMenuBtn {
+    font-family: "CattleTrail";
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    color: var(--primary_text);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: 0.6;
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+    transition: opacity 0.2s;
+}
+
+.failMenuBtn:hover { opacity: 1; }
+
+.failTries {
+    font-family: "CattleTrail";
+    font-size: 20px;
+    color: #c0392b;
+    letter-spacing: 0.1em;
 }
