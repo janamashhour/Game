@@ -12,6 +12,7 @@ import clickSound from './assets/audios/buttonClick.mp4';
 import LevelOneDebrief from './pages/levelOneDebrief';
 import LevelTwoExplanation from './pages/levelTwoExplanation';
 import LevelTwo from './pages/levelTwo';
+import LevelTwoDebrief from './pages/levelTwoDebrief';
 
 const music = new Audio(bgMusic);
 music.loop   = true;
@@ -62,6 +63,8 @@ const [started, setStarted] = useState(false);
         <Route path='/levelOneDebrief' element={<LevelOneDebrief {...musicProps} /> } />
         <Route path='/levelTwoExplanation' element={<LevelTwoExplanation {...musicProps} /> } />
         <Route path='/levelTwo' element={<LevelTwo {...musicProps} />} />
+        <Route path='/levelTwoDebrief' element={<LevelTwoDebrief {...musicProps} /> } />
+
       </Routes>
     </BrowserRouter>
   );

@@ -1,0 +1,94 @@
+.debrief2 {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: hidden;
+    background-image: url(../assets/imgs/debrief2Bg.jpg);
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+
+}
+
+.debriefHeader {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+}
+
+.debriefCharacter {
+    position: absolute;
+    bottom: 220px;
+    left: 80px;
+    height: 400px;
+    object-fit: contain;
+    z-index: 5;
+    animation: debriefFadeIn 0.4s ease forwards;
+}
+
+.debriefBox {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    background-color: transparent;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 230px;
+    background-image: url(../assets/imgs/debriefBox.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.debriefSpeaker {
+    font-family: "SpecialElite";
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.2em;
+}
+
+.debriefText {
+    font-family: "SpecialElite";
+    font-size: 1.3rem;
+    color: #fff;
+    line-height: 1.6;
+    animation: debriefFadeIn 0.4s ease forwards;
+}
+
+.debriefBtns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.debriefSkipBtn {
+    font-family: "SpecialElite";
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.debriefSkipBtn:hover { color: rgba(255, 255, 255, 0.8); }
+
+@keyframes debriefFadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0);   }
+}
