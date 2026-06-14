@@ -19,9 +19,7 @@ const click = new Audio(clickSound);
 click.volume = 0.6;
 
 const Path = () => {
-  const [started, setStarted] = useState(
-    () => localStorage.getItem('gameStarted') === 'true'
-  );
+const [started, setStarted] = useState(false);
   const [isMusicMuted, setIsMusicMuted] = useState(false);
 
   const handleDone = () => {
