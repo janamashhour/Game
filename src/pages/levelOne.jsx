@@ -8,9 +8,9 @@ import './levelOne.css';
 import cluebook from '../assets/icons/clueBookIcon.svg';
 
 const DIFFICULTY = {
-  timeLimit:     60,
+  timeLimit: 60,
   maxWrongTries: 3,
-  warningTime:   10,
+  warningTime: 10,
 };
 
 const rounds = [
@@ -182,7 +182,7 @@ const LevelOne = ({ isMusicMuted, onToggleMusic }) => {
           ))}
         </div>
         <p className="successMessage">The message points to a warehouse.</p>
-        <button className="splashBtn" onClick={() => navigate('/levelMap')}>
+        <button className="splashBtn" onClick={() => navigate('/levelOneDebrief')}>
           NEXT
         </button>
       </div>
