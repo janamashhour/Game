@@ -10,6 +10,7 @@ import bgMusic from './assets/audios/bgMusic.mp4';
 import Preloader from './components/layout/preloader';
 import clickSound from './assets/audios/buttonClick.mp4';
 import LevelOneDebrief from './pages/levelOneDebrief';
+import LevelTwoExplanation from './pages/levelTwoExplanation';
 
 const music = new Audio(bgMusic);
 music.loop   = true;
@@ -58,6 +59,7 @@ const [started, setStarted] = useState(false);
         <Route path='/levelOneExplanation' element={<LevelOneExplanation {...musicProps} />} />
         <Route path='/levelOne' element={<LevelOne {...musicProps} />} />
         <Route path='/levelOneDebrief' element={<LevelOneDebrief {...musicProps} /> } />
+        <Route path='/levelTwoExplanation' element={<LevelTwoExplanation {...musicProps} /> } />
       </Routes>
     </BrowserRouter>
   );

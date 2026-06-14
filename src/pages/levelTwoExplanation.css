@@ -1,0 +1,86 @@
+.levelTwoExplanation {
+    background-image: url(../assets/imgs/levelTwoExplanationBg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.settingsBtnLevelOne {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.dialogue {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    margin-left: 220px;
+}
+
+.dialogueBox {
+    background-image: url(../assets/imgs/dialogueBox.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 488px;
+    height: 173.511px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 28px 48px;
+    color: var(--primary_text);
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0% {
+        filter: drop-shadow(0 0 10px #EDEBE6);
+    }
+    50% {
+        filter: drop-shadow(0 0 10px #EDEBE6)
+                drop-shadow(0 0 10px #EDEBE6);
+    }
+    100% {
+        filter: drop-shadow(0 0 10px #EDEBE6);
+    }
+}
+
+.dialogueCharacter {
+    width: 135px;
+    margin-left: 50px;
+}
+
+.dialogueBox h3 {
+    font-size: 20px;
+    font-family: "CattleTrail";
+    font-weight: 400;
+}
+
+.dialogueBox p {
+    font-size: 18px;
+    font-family: "SpecialElite";
+    font-weight: 400;
+}
+
+.dialogueBtns {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.settingsIcon {
+    width: 70px;
+    height: 70px;
+}
