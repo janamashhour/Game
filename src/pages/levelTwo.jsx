@@ -19,12 +19,12 @@ const DIFFICULTY = {
 };
 
 const ITEMS = [
-  { id: 'badge',      img: badgeImg,      label: 'Badge',      top: '72%', left: '18%', width: '80px'  },
-  { id: 'key',        img: keyImg,        label: 'Key',        top: '68%', left: '44%', width: '90px'  },
+  { id: 'badge', img: badgeImg, label: 'Badge', top: '72%', left: '18%', width: '80px'  },
+  { id: 'key', img: keyImg, label: 'Key', top: '68%', left: '44%', width: '90px'  },
   { id: 'flashlight', img: flashlightImg, label: 'Flashlight', top: '74%', left: '68%', width: '80px'  },
-  { id: 'cloth',      img: clothImg,      label: 'Cloth',      top: '60%', left: '78%', width: '100px' },
-  { id: 'rope',       img: ropeImg,       label: 'Rope',       top: '65%', left: '5%',  width: '90px'  },
-  { id: 'watch',      img: watchImg,      label: 'Watch',      top: '52%', left: '32%', width: '85px'  },
+  { id: 'cloth', img: clothImg, label: 'Cloth', top: '60%', left: '78%', width: '100px' },
+  { id: 'rope', img: ropeImg, label: 'Rope', top: '65%', left: '5%',  width: '90px'  },
+  { id: 'watch', img: watchImg, label: 'Watch', top: '52%', left: '32%', width: '85px'  },
 ];
 
 const LevelTwo = ({ isMusicMuted, onToggleMusic }) => {
@@ -222,7 +222,7 @@ const LevelTwo = ({ isMusicMuted, onToggleMusic }) => {
               <h3 className="failTitle">TIME'S UP</h3>
               <p className="failText">You ran out of time.</p>
               <button className="splashBtn" onClick={(e) => { e.stopPropagation(); handleRestart(); }}>Try Again</button>
-              <button className="failMenuBtn" onClick={(e) => { e.stopPropagation(); navigate('/mainMenu'); }}>Main Menu</button>
+              <button className="splashBtn" onClick={(e) => { e.stopPropagation(); navigate('/mainMenu'); }}>Main Menu</button>
             </>}
 
           </div>
