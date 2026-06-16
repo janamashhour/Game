@@ -1,0 +1,206 @@
+import React, { useState, useRef, useCallback, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import PauseMenu       from '../components/common/pause';
+import SettingsOverlay from '../components/common/settingsOverlay';
+import pause    from '../assets/icons/pauseIcon.svg';
+import cluebook from '../assets/icons/clueBookIcon.svg';
+// import cluebookPage from '../assets/imgs/cluebookPageL4.jpg';
+import './levelTwo.css'; // reuses level 2 styles
+import { level4Items }  from '../data/itemsPool';
+import { storyLevels }  from '../data/levelConfig';
+
+const config = storyLevels.find(l => l.id === 4);
+const ITEMS  = level4Items;
+
+const DIFFICULTY = {
+  timeLimit:      config.timeLimit,
+  maxWrongClicks: config.maxWrong,
+  warningTime:    config.warningTime,
+};
+
+const LevelFour = ({ isMusicMuted, onToggleMusic }) => {
+  const navigate  = useNavigate();
+  const timerRef  = useRef(null);
+
+  const [showCluebook, setShowCluebook] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const [isSoundMuted, setIsSoundMuted] = useState(false);
+  const [isPaused,     setIsPaused]     = useState(false);
+
+  const handleOpenSettings  = () => setShowSettings(true);
+  const handleCloseSettings = () => setShowSettings(false);
+  const handleToggleSound   = () => setIsSoundMuted(s => !s);
+
+  const handlePause = useCallback(() => {
+    clearInterval(timerRef.current);
+    setIsPaused(true);
+  }, []);
+
+  const handleResume = useCallback(() => {
+    setIsPaused(false);
+    setShowSettings(false);
+  }, []);
+
+  const [collected,   setCollected]   = useState([]);
+  const [wrongClicks, setWrongClicks] = useState(0);
+  const [timeLeft,    setTimeLeft]    = useState(DIFFICULTY.timeLimit);
+  const [showFail,    setShowFail]    = useState(false);
+  const [failReason,  setFailReason]  = useState('');
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [wrongFlash,  setWrongFlash]  = useState(false);
+
+  const allCollected = collected.length === ITEMS.length;
+
+  useEffect(() => {
+    if (isPaused || showFail || showSuccess || showCluebook) return;
+    timerRef.current = setInterval(() => {
+      setTimeLeft(t => {
+        if (t <= 1) {
+          clearInterval(timerRef.current);
+          setFailReason('time');
+          setShowFail(true);
+          return 0;
+        }
+        return t - 1;
+      });
+    }, 1000);
+    return () => clearInterval(timerRef.current);
+  }, [isPaused, showFail, showSuccess, showCluebook]);
+
+  useEffect(() => {
+    if (allCollected) {
+      clearInterval(timerRef.current);
+      setShowSuccess(true);
+    }
+  }, [allCollected]);
+
+  const handleItemClick = (e, id) => {
+    e.stopPropagation();
+    if (isPaused || collected.includes(id)) return;
+    setCollected(prev => [...prev, id]);
+  };
+
+  const handleBgClick = () => {
+    if (isPaused || showFail || showSuccess) return;
+    const newWrong = wrongClicks + 1;
+    setWrongClicks(newWrong);
+    setWrongFlash(true);
+    setTimeout(() => setWrongFlash(false), 400);
+    if (newWrong >= DIFFICULTY.maxWrongClicks) {
+      clearInterval(timerRef.current);
+      setFailReason('clicks');
+      setShowFail(true);
+    }
+  };
+
+  const handleRestart = () => {
+    setCollected([]);
+    setWrongClicks(0);
+    setTimeLeft(DIFFICULTY.timeLimit);
+    setShowFail(false);
+    setShowSuccess(false);
+    setFailReason('');
+    setIsPaused(false);
+  };
+
+  const Header = () => (
+    <div className="l2Header">
+      <button className="intro-hud-btn intro-hud-btn--pause" onClick={handlePause} disabled={isPaused}>
+        <img src={pause} alt="pause" />
+      </button>
+      <button className="cluebookIcon" onClick={() => setShowCluebook(true)}>
+        <img src={cluebook} alt="cluebook" />
+      </button>
+    </div>
+  );
+
+  if (showCluebook) return (
+    <div className="l2CluebookPage" style={{ backgroundImage: `url(/images/${config.background})` }}>
+      <Header />
+      {/* <img src={cluebookPage} alt="Cluebook" className="cluebookImage" /> */}
+      <button className="splashBtn" onClick={() => setShowCluebook(false)}>CONTINUE</button>
+    </div>
+  );
+
+  if (showSuccess) return (
+    <div className="l2SuccessPage" style={{ backgroundImage: `url(/images/${config.background})` }}>
+      <Header />
+      <div className="l2SuccessCard">
+        <h2 className="l2SuccessTitle">ALL EVIDENCE COLLECTED</h2>
+        <div className="l2SuccessItems">
+          {ITEMS.map(item => (
+            <img key={item.id} src={item.img} alt={item.label} className="l2SuccessItemImg" />
+          ))}
+        </div>
+        <button className="splashBtn" onClick={() => navigate(config.debrief)}>NEXT</button>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className={`levelTwo ${wrongFlash ? 'levelTwo--wrongFlash' : ''}`}
+      style={{ backgroundImage: `url(/images/${config.background})` }}
+      onClick={handleBgClick}
+    >
+      <Header />
+
+      <div className="l2Hud">
+        <div className="triesRow">
+          {Array.from({ length: DIFFICULTY.maxWrongClicks }).map((_, i) => (
+            <span key={i} className={`tryIcon ${i < wrongClicks ? 'tryIcon--used' : ''}`}>✕</span>
+          ))}
+        </div>
+        <div className={`timer ${timeLeft <= DIFFICULTY.warningTime ? 'timer--warning' : ''}`}>
+          {timeLeft}s
+        </div>
+      </div>
+
+      {ITEMS.map(item => (
+        <img
+          key={item.id}
+          src={item.img}
+          alt={item.label}
+          className={`l2Item ${collected.includes(item.id) ? 'l2Item--collected' : ''}`}
+          style={{ top: item.top, left: item.left, width: item.width }}
+          onClick={(e) => handleItemClick(e, item.id)}
+        />
+      ))}
+
+      <div className="l2Tray">
+        {ITEMS.map(item => (
+          <div key={item.id} className={`l2TraySlot ${collected.includes(item.id) ? 'l2TraySlot--collected' : ''}`}>
+            <img src={item.img} alt={item.label} className="l2TrayImg" />
+          </div>
+        ))}
+      </div>
+
+      {isPaused && !showSettings && (
+        <PauseMenu onResume={handleResume} onOpenSettings={handleOpenSettings} onMainMenu={() => navigate('/mainMenu')} />
+      )}
+      {isPaused && showSettings && (
+        <SettingsOverlay isMusicMuted={isMusicMuted} isSoundMuted={isSoundMuted} onToggleMusic={onToggleMusic} onToggleSound={handleToggleSound} onBack={handleCloseSettings} />
+      )}
+
+      {showFail && (
+        <div className="failOverlay">
+          <div className="failCard" style={{ pointerEvents: 'all' }}>
+            {failReason === 'clicks' && <>
+              <h3 className="failTitle">TOO MANY MISTAKES</h3>
+              <p className="failText">You grabbed the wrong things.</p>
+              <button className="splashBtn" onClick={(e) => { e.stopPropagation(); handleRestart(); }}>Try Again</button>
+              <button className="failMenuBtn" onClick={(e) => { e.stopPropagation(); navigate('/mainMenu'); }}>Main Menu</button>
+            </>}
+            {failReason === 'time' && <>
+              <h3 className="failTitle">TIME'S UP</h3>
+              <p className="failText">You ran out of time.</p>
+              <button className="splashBtn" onClick={(e) => { e.stopPropagation(); handleRestart(); }}>Try Again</button>
+              <button className="failMenuBtn" onClick={(e) => { e.stopPropagation(); navigate('/mainMenu'); }}>Main Menu</button>
+            </>}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default LevelFour;

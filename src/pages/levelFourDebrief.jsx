@@ -14,7 +14,7 @@ import debriefLine5 from '../assets/audios/level2/debriefL2-5.mp4';
 import debriefLine6 from '../assets/audios/level2/debriefL2-6.mp4';
 
 
-const LEVEL_ID = 2;
+const LEVEL_ID = 4;
 
 const dialogue = [
   { speaker: 'Lucas', image: lucas, text: 'I found a badge.', audio: debriefLine1 },
@@ -25,7 +25,7 @@ const dialogue = [
   { speaker: 'Robert', image: robert, text: "...I was.", audio: debriefLine6 },
 ];
 
-const LevelTwoDebrief = ({ isMusicMuted, onToggleMusic }) => {
+const LevelFourDebrief = ({ isMusicMuted, onToggleMusic }) => {
   const navigate  = useNavigate();
   const audioRef  = useRef(null);
 
@@ -139,4 +139,4 @@ const LevelTwoDebrief = ({ isMusicMuted, onToggleMusic }) => {
   );
 };
 
-export default LevelTwoDebrief;
+export default LevelFourDebrief;

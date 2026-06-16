@@ -13,6 +13,12 @@ import LevelOneDebrief from './pages/levelOneDebrief';
 import LevelTwoExplanation from './pages/levelTwoExplanation';
 import LevelTwo from './pages/levelTwo';
 import LevelTwoDebrief from './pages/levelTwoDebrief';
+import LevelThree from './pages/levelThree';
+import LevelFour  from './pages/levelFour';
+import LevelThreeDebrief from './pages/levelThreeDebrief';
+import LevelFourDebrief from './pages/levelFourDebrief';
+import EndlessDecode  from './pages/EndlessDecode';
+import EndlessCollect from './pages/EndlessCollect';
 
 const music = new Audio(bgMusic);
 music.loop   = true;
@@ -64,7 +70,12 @@ const [started, setStarted] = useState(false);
         <Route path='/levelTwoExplanation' element={<LevelTwoExplanation {...musicProps} /> } />
         <Route path='/levelTwo' element={<LevelTwo {...musicProps} />} />
         <Route path='/levelTwoDebrief' element={<LevelTwoDebrief {...musicProps} /> } />
-
+        <Route path='/levelThree' element={<LevelThree {...musicProps} />} />
+        <Route path='/levelThreeDebrief' element={<LevelThreeDebrief {...musicProps} /> } />
+        <Route path='/levelFour'  element={<LevelFour  {...musicProps} />} />
+        <Route path='/levelFourDebrief' element={<LevelFourDebrief {...musicProps} /> } />
+        <Route path='/endless/decode'  element={<EndlessDecode  {...musicProps} />} />
+        <Route path='/endless/collect' element={<EndlessCollect {...musicProps} />} />
       </Routes>
     </BrowserRouter>
   );

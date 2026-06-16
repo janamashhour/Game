@@ -10,6 +10,8 @@ import debriefLine1 from '../assets/audios/level1/debrief1.mp4';
 import debriefLine2 from '../assets/audios/level1/debrief2.mp4';
 import debriefLine3 from '../assets/audios/level1/debrief3.mp4';
 
+const LEVEL_ID = 1;
+
 const dialogue = [
   { speaker: 'Lucas', image: lucas, text: 'I decoded it. Warehouse.', audio: debriefLine1 },
   { speaker: 'Robert', image: robert, text: '...that place again.', audio: debriefLine2 },
@@ -54,8 +56,12 @@ const LevelOneDebrief = ({ isMusicMuted, onToggleMusic }) => {
 
   const goToLevelMap = () => {
     audioRef.current?.pause();
-    localStorage.setItem('completedLevels', JSON.stringify([1]));
-    navigate('/levelMap', { state: { completedLevels: [1] } });
+
+    const saved   = JSON.parse(localStorage.getItem('completedLevels') || '[]');
+    const updated = [...new Set([...saved, LEVEL_ID])]; // adds 1, no duplicates
+
+    localStorage.setItem('completedLevels', JSON.stringify(updated));
+    navigate('/levelMap', { state: { completedLevels: updated } });
   };
 
   const handleNext = () => {
