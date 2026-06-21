@@ -1,9 +1,3 @@
-// wordPool.js
-// ─────────────────────────────────────────────────────────────
-// All decodable words for both story and endless decode levels.
-// Each word has its morse patterns and wrong letter pools.
-// ─────────────────────────────────────────────────────────────
-
 export const wordPool = [
   {
     id: 'warehouse',
@@ -35,7 +29,6 @@ export const wordPool = [
       { morse: '-',     correct: 'T', wrongPool: ['M', 'N', 'E', 'A', 'I'] },
     ],
   },
-  // ── Endless pool — used for levels 5+ ──────────────────────
   {
     id: 'archive',
     word: 'ARCHIVE',
@@ -88,8 +81,6 @@ export const wordPool = [
   },
 ];
 
-// ── Helper: pick a random word from endless pool ─────────────
-// excludes story words so they don't repeat in endless mode
 export const getRandomWord = () => {
   const endlessPool = wordPool.filter(w => !w.storyLevel);
   return endlessPool[Math.floor(Math.random() * endlessPool.length)];

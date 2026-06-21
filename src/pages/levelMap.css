@@ -40,7 +40,7 @@
 .levels {
     display: flex;
     align-items: center;
-    gap: 220px;
+    gap: 100px;
 }
 
 .openLevel {

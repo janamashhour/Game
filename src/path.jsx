@@ -31,11 +31,14 @@ const Path = () => {
 const [started, setStarted] = useState(false);
   const [isMusicMuted, setIsMusicMuted] = useState(false);
 
-  const handleDone = () => {
-    music.play().catch(() => {});
-    localStorage.setItem('gameStarted', 'true');
-    setStarted(true);
-  };
+const handleDone = () => {
+  localStorage.removeItem('completedLevels');
+  localStorage.removeItem('endlessLevel_decode');
+  localStorage.removeItem('endlessLevel_collect');
+  
+  music.play().catch(() => {});
+  setStarted(true);
+};
 
   useEffect(() => {
     const handleButtonClick = (e) => {

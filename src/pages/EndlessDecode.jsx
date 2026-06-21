@@ -152,8 +152,9 @@ const EndlessDecode = ({ isMusicMuted, onToggleMusic }) => {
   if (showCluebook) return (
     <div className="cluebookPage">
       <Header />
-      <img src={cluebookPage} alt="Morse Code Reference" className="cluebookImage" />
-      <button className="splashBtn" onClick={() => setShowCluebook(false)}>CONTINUE</button>
+      <button className="splashBtn" onClick={() => setShowCluebook(false)}>
+        CONTINUE
+      </button>
     </div>
   );
 
@@ -169,7 +170,7 @@ const EndlessDecode = ({ isMusicMuted, onToggleMusic }) => {
         </div>
         <p className="successMessage">Endless Level {endlessLevelNum} complete.</p>
         <button className="splashBtn" onClick={handleContinue}>NEXT LEVEL</button>
-        <button className="failMenuBtn" onClick={() => navigate('/levelMap')}>Level Map</button>
+        <button className="splashBtn" onClick={() => navigate('/levelMap')}>Level Map</button>
       </div>
     </div>
   );

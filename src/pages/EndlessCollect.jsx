@@ -147,7 +147,7 @@ const EndlessCollect = ({ isMusicMuted, onToggleMusic }) => {
           ))}
         </div>
         <button className="splashBtn" onClick={handleContinue}>NEXT LEVEL</button>
-        <button className="failMenuBtn" onClick={() => navigate('/levelMap')}>Level Map</button>
+        <button className="splashBtn" onClick={() => navigate('/levelMap')}>Level Map</button>
       </div>
     </div>
   );
