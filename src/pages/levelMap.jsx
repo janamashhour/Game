@@ -17,7 +17,6 @@ const LevelMap = ({ isMusicMuted, onToggleMusic }) => {
 
   const location = useLocation();
 
-  // ── Read + merge + save completed levels ─────────────────────
   const savedLevels     = JSON.parse(localStorage.getItem('completedLevels') || '[]');
   const stateLevels     = location.state?.completedLevels || [];
   const completedLevels = [...new Set([...savedLevels, ...stateLevels])];
@@ -26,18 +25,11 @@ const LevelMap = ({ isMusicMuted, onToggleMusic }) => {
     localStorage.setItem('completedLevels', JSON.stringify(completedLevels));
   }
 
-  // ── Done flags ───────────────────────────────────────────────
   const level1Done = completedLevels.includes(1);
   const level2Done = completedLevels.includes(2);
   const level3Done = completedLevels.includes(3);
   const level4Done = completedLevels.includes(4);
 
-  // ── Open flags ───────────────────────────────────────────────
-  // A level is open if:
-  //   - it's already been completed (replay), OR
-  //   - the previous level is done (normal unlock), OR
-  //   - any HIGHER level is done (means this one was already passed)
-  const level1Open  = true; // always open
   const level2Open  = level1Done || level2Done || level3Done || level4Done;
   const level3Open  = level2Done || level3Done || level4Done;
   const level4Open  = level3Done || level4Done;
@@ -46,17 +38,13 @@ const LevelMap = ({ isMusicMuted, onToggleMusic }) => {
   return (
     <>
       <div className="levelMap">
-
         <div className="levelMapTop">
           <button className="settingsBtn" onClick={handleOpenSettings}>
             <img src={settingsIcon} alt="settings icon" />
           </button>
           <h2>Select Level</h2>
         </div>
-
         <div className="levels">
-
-          {/* ── Level 1 — always open ── */}
           <div className="levelWrapper">
             <Link className="link" to="/levelOneExplanation">
               <button className="openLevel">
@@ -66,8 +54,6 @@ const LevelMap = ({ isMusicMuted, onToggleMusic }) => {
               </button>
             </Link>
           </div>
-
-          {/* ── Level 2 ── */}
           <div className="levelWrapper">
             {level2Open ? (
               <Link className="link" to="/levelTwoExplanation">
@@ -82,8 +68,6 @@ const LevelMap = ({ isMusicMuted, onToggleMusic }) => {
               </button>
             )}
           </div>
-
-          {/* ── Level 3 ── */}
           <div className="levelWrapper">
             {level3Open ? (
               <Link className="link" to="/levelThree">
@@ -98,8 +82,6 @@ const LevelMap = ({ isMusicMuted, onToggleMusic }) => {
               </button>
             )}
           </div>
-
-          {/* ── Level 4 ── */}
           <div className="levelWrapper">
             {level4Open ? (
               <Link className="link" to="/levelFour">
@@ -116,8 +98,6 @@ const LevelMap = ({ isMusicMuted, onToggleMusic }) => {
           </div>
 
         </div>
-
-        {/* ── Endless — unlocks after all 4 story levels done ── */}
         {endlessOpen && (
           <div className="endlessSection">
             <h3 className="endlessTitle">ENDLESS</h3>
