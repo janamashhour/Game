@@ -4,7 +4,6 @@ import PauseMenu       from '../components/common/pause';
 import SettingsOverlay from '../components/common/settingsOverlay';
 import pause    from '../assets/icons/pauseIcon.svg';
 import cluebook from '../assets/icons/clueBookIcon.svg';
-import cluebookPage from '../assets/imgs/cluebookPage.jpg';
 import './levelOne.css';
 import { wordPool }    from '../data/wordPool';
 import { storyLevels } from '../data/levelConfig';
@@ -125,25 +124,29 @@ const LevelThree = ({ isMusicMuted, onToggleMusic }) => {
 
   const Header = () => (
     <div className="levelOneHeader">
-      <button className="intro-hud-btn intro-hud-btn--pause" onClick={handlePause} disabled={isPaused}>
-        <img src={pause} alt="pause" />
+      <button
+        className="intro-hud-btn intro-hud-btn--pause"
+        onClick={handlePause}
+        disabled={isPaused}
+        aria-label="Pause"
+      >
+        <img src={pause} alt="pause icon" />
       </button>
       <button className="cluebookIcon" onClick={() => setShowCluebook(true)}>
-        <img className="cluebookIcon" src={cluebook} alt="cluebook" />
+        <img className="cluebookIcon" src={cluebook} alt="cluebook icon" />
       </button>
     </div>
   );
 
   if (showCluebook) return (
-    <div className="cluebookPage" style={{ backgroundImage: `url(/images/${config.background})` }}>
+    <div className="cluebookPage">
       <Header />
-      <img src={cluebookPage} alt="Morse Code Reference" className="cluebookImage" />
       <button className="splashBtn" onClick={() => setShowCluebook(false)}>CONTINUE</button>
     </div>
   );
 
   if (showSuccess) return (
-    <div className="successPage" style={{ backgroundImage: `url(/images/${config.background})` }}>
+    <div className="successPage">
       <Header />
       <div className="successPaper">
         <h2 className="successTitle">DECODED</h2>
@@ -160,7 +163,7 @@ const LevelThree = ({ isMusicMuted, onToggleMusic }) => {
 
   return (
     <>
-      <div className="levelOne" style={{ backgroundImage: `url(/images/${config.background})` }}>
+      <div className="levelOne">
         <Header />
 
         <div className="levelOneHud">

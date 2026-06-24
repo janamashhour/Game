@@ -4,8 +4,9 @@ import PauseMenu       from '../components/common/pause';
 import SettingsOverlay from '../components/common/settingsOverlay';
 import pause    from '../assets/icons/pauseIcon.svg';
 import cluebook from '../assets/icons/clueBookIcon.svg';
-// import cluebookPage from '../assets/imgs/cluebookPageL4.jpg';
-import './levelTwo.css'; // reuses level 2 styles
+import level4Bg from '../assets/imgs/level4Bg.jpg';
+import './levelTwo.css';
+import './levelFour.css';
 import { level4Items }  from '../data/itemsPool';
 import { storyLevels }  from '../data/levelConfig';
 
@@ -17,6 +18,8 @@ const DIFFICULTY = {
   maxWrongClicks: config.maxWrong,
   warningTime:    config.warningTime,
 };
+
+const bgStyle = { backgroundImage: `url(${level4Bg})` };
 
 const LevelFour = ({ isMusicMuted, onToggleMusic }) => {
   const navigate  = useNavigate();
@@ -104,26 +107,30 @@ const LevelFour = ({ isMusicMuted, onToggleMusic }) => {
   };
 
   const Header = () => (
-    <div className="l2Header">
-      <button className="intro-hud-btn intro-hud-btn--pause" onClick={handlePause} disabled={isPaused}>
-        <img src={pause} alt="pause" />
+    <div className="levelOneHeader">
+      <button
+        className="intro-hud-btn intro-hud-btn--pause"
+        onClick={handlePause}
+        disabled={isPaused}
+        aria-label="Pause"
+      >
+        <img src={pause} alt="pause icon" />
       </button>
       <button className="cluebookIcon" onClick={() => setShowCluebook(true)}>
-        <img src={cluebook} alt="cluebook" />
+        <img className="cluebookIcon" src={cluebook} alt="cluebook icon" />
       </button>
     </div>
   );
 
   if (showCluebook) return (
-    <div className="l2CluebookPage" style={{ backgroundImage: `url(/images/${config.background})` }}>
+    <div className="l2CluebookPage" style={bgStyle}>
       <Header />
-      {/* <img src={cluebookPage} alt="Cluebook" className="cluebookImage" /> */}
       <button className="splashBtn" onClick={() => setShowCluebook(false)}>CONTINUE</button>
     </div>
   );
 
   if (showSuccess) return (
-    <div className="l2SuccessPage" style={{ backgroundImage: `url(/images/${config.background})` }}>
+    <div className="l2SuccessPage" style={bgStyle}>
       <Header />
       <div className="l2SuccessCard">
         <h2 className="l2SuccessTitle">ALL EVIDENCE COLLECTED</h2>
@@ -138,8 +145,9 @@ const LevelFour = ({ isMusicMuted, onToggleMusic }) => {
   );
 
   return (
-    <div className={`levelTwo ${wrongFlash ? 'levelTwo--wrongFlash' : ''}`}
-      style={{ backgroundImage: `url(/images/${config.background})` }}
+    <div
+      className={`levelTwo ${wrongFlash ? 'levelTwo--wrongFlash' : ''}`}
+      style={bgStyle}
       onClick={handleBgClick}
     >
       <Header />
@@ -188,13 +196,13 @@ const LevelFour = ({ isMusicMuted, onToggleMusic }) => {
               <h3 className="failTitle">TOO MANY MISTAKES</h3>
               <p className="failText">You grabbed the wrong things.</p>
               <button className="splashBtn" onClick={(e) => { e.stopPropagation(); handleRestart(); }}>Try Again</button>
-              <button className="failMenuBtn" onClick={(e) => { e.stopPropagation(); navigate('/mainMenu'); }}>Main Menu</button>
+              <button className="splashBtn" onClick={(e) => { e.stopPropagation(); navigate('/mainMenu'); }}>Main Menu</button>
             </>}
             {failReason === 'time' && <>
               <h3 className="failTitle">TIME'S UP</h3>
               <p className="failText">You ran out of time.</p>
               <button className="splashBtn" onClick={(e) => { e.stopPropagation(); handleRestart(); }}>Try Again</button>
-              <button className="failMenuBtn" onClick={(e) => { e.stopPropagation(); navigate('/mainMenu'); }}>Main Menu</button>
+              <button className="splashBtn" onClick={(e) => { e.stopPropagation(); navigate('/mainMenu'); }}>Main Menu</button>
             </>}
           </div>
         </div>

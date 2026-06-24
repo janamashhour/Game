@@ -3,14 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import PauseMenu       from '../components/common/pause';
 import SettingsOverlay from '../components/common/settingsOverlay';
 import pause    from '../assets/icons/pauseIcon.svg';
-import cluebook from '../assets/icons/clueBookIcon.svg';
-import cluebookPage from '../assets/imgs/cluebookPage.jpg';
 import './levelTwo.css';
 import { pickRandom8 } from '../data/itemsPool';
 import { timeLimits, wrongTryLimits, warningTimes } from '../data/levelConfig';
 import { getEndlessLevel, incrementEndlessLevel } from '../data/levelConfig';
+import endlessBg1 from '../assets/imgs/endlessBg1.jpg';
+import endlessBg2 from '../assets/imgs/endlessBg2.jpg';
+import endlessBg3 from '../assets/imgs/endlessBg3.jpg';
 
-const backgrounds = ['endlessBg1.jpg', 'endlessBg2.jpg', 'endlessBg3.jpg'];
+const backgrounds = [endlessBg1, endlessBg2, endlessBg3];
 
 const buildLevel = (endlessLevelNum) => {
   const diffIndex = Math.min(endlessLevelNum - 1, timeLimits.length - 1);
@@ -30,7 +31,6 @@ const EndlessCollect = ({ isMusicMuted, onToggleMusic }) => {
   const [endlessLevelNum, setEndlessLevelNum] = useState(() => getEndlessLevel('collect'));
   const [level, setLevel] = useState(() => buildLevel(endlessLevelNum));
 
-  const [showCluebook, setShowCluebook] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [isSoundMuted, setIsSoundMuted] = useState(false);
   const [isPaused,     setIsPaused]     = useState(false);
@@ -55,7 +55,7 @@ const EndlessCollect = ({ isMusicMuted, onToggleMusic }) => {
   useEffect(() => { setTimeLeft(level.timeLimit); }, [level]);
 
   useEffect(() => {
-    if (isPaused || showFail || showSuccess || showCluebook) return;
+    if (isPaused || showFail || showSuccess) return;
     timerRef.current = setInterval(() => {
       setTimeLeft(t => {
         if (t <= 1) {
@@ -68,7 +68,7 @@ const EndlessCollect = ({ isMusicMuted, onToggleMusic }) => {
       });
     }, 1000);
     return () => clearInterval(timerRef.current);
-  }, [isPaused, showFail, showSuccess, showCluebook]);
+  }, [isPaused, showFail, showSuccess]);
 
   useEffect(() => {
     if (allCollected) {
@@ -96,9 +96,8 @@ const EndlessCollect = ({ isMusicMuted, onToggleMusic }) => {
     }
   };
 
-  // Replay SAME level on loss
   const handleRestart = () => {
-    setLevel(buildLevel(endlessLevelNum)); // re-randomize items/bg, same difficulty
+    setLevel(buildLevel(endlessLevelNum));
     setCollected([]);
     setWrongClicks(0);
     setShowFail(false);
@@ -106,7 +105,6 @@ const EndlessCollect = ({ isMusicMuted, onToggleMusic }) => {
     setIsPaused(false);
   };
 
-  // Advance to next level on win
   const handleContinue = () => {
     const nextLevelNum = incrementEndlessLevel('collect');
     setEndlessLevelNum(nextLevelNum);
@@ -122,22 +120,11 @@ const EndlessCollect = ({ isMusicMuted, onToggleMusic }) => {
       <button className="intro-hud-btn intro-hud-btn--pause" onClick={handlePause} disabled={isPaused}>
         <img src={pause} alt="pause" />
       </button>
-      <button className="cluebookIcon" onClick={() => setShowCluebook(true)}>
-        <img src={cluebook} alt="cluebook" />
-      </button>
-    </div>
-  );
-
-  if (showCluebook) return (
-    <div className="l2CluebookPage">
-      <Header />
-      <img src={cluebookPage} alt="Cluebook" className="cluebookImage" />
-      <button className="splashBtn" onClick={() => setShowCluebook(false)}>CONTINUE</button>
     </div>
   );
 
   if (showSuccess) return (
-    <div className="l2SuccessPage">
+    <div className="l2SuccessPage" style={{ backgroundImage: `url(${level.background})` }}>
       <Header />
       <div className="l2SuccessCard">
         <h2 className="l2SuccessTitle">ENDLESS LEVEL {endlessLevelNum} COMPLETE</h2>
@@ -153,7 +140,10 @@ const EndlessCollect = ({ isMusicMuted, onToggleMusic }) => {
   );
 
   return (
-    <div className={`levelTwo ${wrongFlash ? 'levelTwo--wrongFlash' : ''}`} onClick={handleBgClick}>
+    <div
+    className={`levelTwo ${wrongFlash ? 'levelTwo--wrongFlash' : ''}`}
+    style={{ backgroundImage: `url(${level.background})` }}
+    onClick={handleBgClick}>
       <Header />
 
       <div className="l2Hud">

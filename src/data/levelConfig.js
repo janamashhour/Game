@@ -28,10 +28,10 @@ export const storyLevels = [
     id:       3,
     type:     'decode',
     wordId:   'suspect',
-    timeLimit:    timeLimits[2],     // 45s — harder
-    maxWrong:     wrongTryLimits[2], // 2
-    warningTime:  warningTimes[2],   // 10s
-    background:   'level3Bg.jpg',   // placeholder
+    timeLimit:    timeLimits[2],
+    maxWrong:     wrongTryLimits[2],
+    warningTime:  warningTimes[2],
+    background:   'levelOneBg.jpg',
     debrief:      '/levelThreeDebrief',
   },
   {
@@ -61,9 +61,8 @@ export const generateEndlessLevel = (levelNumber, type) => {
   };
 };
 
-// ── Endless progress (persisted in localStorage) ──────────────
 export const getEndlessLevel = (type) => {
-  const key = `endlessLevel_${type}`; // 'decode' or 'collect'
+  const key = `endlessLevel_${type}`;
   return parseInt(localStorage.getItem(key) || '1', 10);
 };
 

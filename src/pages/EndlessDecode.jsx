@@ -4,9 +4,8 @@ import PauseMenu       from '../components/common/pause';
 import SettingsOverlay from '../components/common/settingsOverlay';
 import pause    from '../assets/icons/pauseIcon.svg';
 import cluebook from '../assets/icons/clueBookIcon.svg';
-import cluebookPage from '../assets/imgs/cluebookPage.jpg';
-import './levelOne.css'; // same visual style as decode levels
-import { wordPool, getRandomWord } from '../data/wordPool';
+import './levelOne.css';
+import { getRandomWord } from '../data/wordPool';
 import { timeLimits, wrongTryLimits, warningTimes } from '../data/levelConfig';
 import { getEndlessLevel, incrementEndlessLevel } from '../data/levelConfig';
 
@@ -20,7 +19,6 @@ const getRandomOptions = (correct, wrongPool) => {
   return [correct, ...shuffled.slice(0, 2)].sort(() => Math.random() - 0.5);
 };
 
-// Builds one full round of gameplay: picks a word + generates difficulty
 const buildLevel = (endlessLevelNum) => {
   const wordData = getRandomWord();
   const diffIndex = Math.min(endlessLevelNum - 1, timeLimits.length - 1);
@@ -114,9 +112,8 @@ const EndlessDecode = ({ isMusicMuted, onToggleMusic }) => {
     setShowFail(false);
   };
 
-  // Replay the SAME level on loss — does not advance or change difficulty
   const handleRestart = () => {
-    setLevel(buildLevel(endlessLevelNum)); // re-randomize word + options, same difficulty
+    setLevel(buildLevel(endlessLevelNum));
     setCurrentRound(0);
     setDecoded([]);
     setWrongTries(0);
@@ -126,7 +123,6 @@ const EndlessDecode = ({ isMusicMuted, onToggleMusic }) => {
   };
   useEffect(() => { setTimeLeft(level.timeLimit); }, [level]);
 
-  // On win — advance to the next endless level
   const handleContinue = () => {
     const nextLevelNum = incrementEndlessLevel('decode');
     setEndlessLevelNum(nextLevelNum);
@@ -160,7 +156,6 @@ const EndlessDecode = ({ isMusicMuted, onToggleMusic }) => {
 
   if (showSuccess) return (
     <div className="successPage">
-      <Header />
       <div className="successPaper">
         <h2 className="successTitle">DECODED</h2>
         <div className="successLetterRow">

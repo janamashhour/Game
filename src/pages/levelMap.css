@@ -110,7 +110,8 @@
 
 .endlessTitle {
     font-family: "CattleTrail";
-    font-size: 1.2rem;
+    font-size: 30px;
+    filter: drop-shadow(20px 20px 20px #EDEBE6);
     letter-spacing: 0.3em;
     color: var(--primary_bg);
     opacity: 0.7;
@@ -123,17 +124,28 @@
 }
 
 .endlessBtn {
+    background-image: url(../assets/imgs/buttonBg.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    background: transparent;
+    justify-content: center;
+    background-color: transparent;
     border: none;
     cursor: pointer;
     font-family: "CattleTrail";
-    font-size: 0.9rem;
+    width: 140px;
+    height: 46px;
+    font-size: 28px;
     color: var(--primary_text);
     transition: transform 0.2s ease;
+}
+
+.endlessBtn:hover {
+    background-image: url(../assets/imgs/buttonHover.svg);
+    color: var(--primary_bg);
 }
 
 .endlessBtn img {
