@@ -147,7 +147,6 @@ const LevelThree = ({ isMusicMuted, onToggleMusic }) => {
 
   if (showSuccess) return (
     <div className="successPage">
-      <Header />
       <div className="successPaper">
         <h2 className="successTitle">DECODED</h2>
         <div className="successLetterRow">

@@ -6,23 +6,23 @@ import robert from '../assets/imgs/robert.png';
 import pause  from '../assets/icons/pauseIcon.svg';
 import PauseMenu       from '../components/common/pause';
 import SettingsOverlay from '../components/common/settingsOverlay';
-import debriefLine1 from '../assets/audios/level2/debriefL2-1.mp4';
-import debriefLine2 from '../assets/audios/level2/debriefL2-2.mp4';
-import debriefLine3 from '../assets/audios/level2/debriefL2-3.mp4';
-import debriefLine4 from '../assets/audios/level2/debriefL2-4.mp4';
-import debriefLine5 from '../assets/audios/level2/debriefL2-5.mp4';
-import debriefLine6 from '../assets/audios/level2/debriefL2-6.mp4';
+import l3debrief1 from '../assets/audios/level3/l3-debrief1.mp4';
+import l3debrief2 from '../assets/audios/level3/l3-debrief2.mp4';
+import l3debrief3 from '../assets/audios/level3/l3-debrief3.mp4';
+import l3debrief4 from '../assets/audios/level3/l3-debrief4.mp4';
+import l3debrief5 from '../assets/audios/level3/l3-debrief5.mp4';
+import l3debrief6 from '../assets/audios/level3/l3-debrief6.mp4';
 
 
 const LEVEL_ID = 3;
 
 const dialogue = [
-  { speaker: 'Lucas', image: lucas, text: 'I found a badge.', audio: debriefLine1 },
-  { speaker: 'Robert', image: robert, text: '…you’re making a mistake.', audio: debriefLine2 },
-  { speaker: 'Lucas', image: lucas, text: "Then tell me why it was there.", audio: debriefLine3 },
-  { speaker: 'Robert', image: robert, text: "…some cases aren’t meant to be solved.", audio: debriefLine4 },
-  { speaker: 'Lucas', image: lucas, text: "You were there.", audio: debriefLine5 },
-  { speaker: 'Robert', image: robert, text: "...I was.", audio: debriefLine6 },
+  { speaker: 'Lucas', image: lucas, text: "The cipher from the vault... I decoded it. It spells out 'SUSPECT'.", audio: l3debrief1 },
+  { speaker: 'Robert', image: robert, text: "A word doesn't change anything, Lucas. The case is dead.", audio: l3debrief2 },
+  { speaker: 'Lucas', image: lucas, text: "You don't get it. It wasn't pointing to an outsider. It was a cross-reference to an internal shield number.", audio: l3debrief3 },
+  { speaker: 'Robert', image: robert, text: "...Put it down. You don't know what you're pulling on.", audio: l3debrief4 },
+  { speaker: 'Lucas', image: lucas, text: "The suspect wasn't a criminal on the street, Robert. It was a cop. Someone who knew exactly how to bury a file.", audio: l3debrief5 },
+  { speaker: 'Robert', image: robert, text: "...If you want to prove a ghost committed a crime, you're going to need more than a decoded word. You'll need the original ledger.", audio: l3debrief6 },
 ];
 
 const LevelThreeDebrief = ({ isMusicMuted, onToggleMusic }) => {

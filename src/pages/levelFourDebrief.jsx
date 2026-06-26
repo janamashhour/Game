@@ -6,23 +6,23 @@ import robert from '../assets/imgs/robert.png';
 import pause  from '../assets/icons/pauseIcon.svg';
 import PauseMenu       from '../components/common/pause';
 import SettingsOverlay from '../components/common/settingsOverlay';
-import debriefLine1 from '../assets/audios/level2/debriefL2-1.mp4';
-import debriefLine2 from '../assets/audios/level2/debriefL2-2.mp4';
-import debriefLine3 from '../assets/audios/level2/debriefL2-3.mp4';
-import debriefLine4 from '../assets/audios/level2/debriefL2-4.mp4';
-import debriefLine5 from '../assets/audios/level2/debriefL2-5.mp4';
-import debriefLine6 from '../assets/audios/level2/debriefL2-6.mp4';
+import l4debrief1 from '../assets/audios/level4/l4-debrief1.mp4';
+import l4debrief2 from '../assets/audios/level4/l4-debrief2.mp4';
+import l4debrief3 from '../assets/audios/level4/l4-debrief3.mp4';
+import l4debrief4 from '../assets/audios/level4/l4-debrief4.mp4';
+import l4debrief5 from '../assets/audios/level4/l4-debrief5.mp4';
+import l4debrief6 from '../assets/audios/level4/l4-debrief6.mp4';
 
 
 const LEVEL_ID = 4;
 
 const dialogue = [
-  { speaker: 'Lucas', image: lucas, text: 'I found a badge.', audio: debriefLine1 },
-  { speaker: 'Robert', image: robert, text: '…you’re making a mistake.', audio: debriefLine2 },
-  { speaker: 'Lucas', image: lucas, text: "Then tell me why it was there.", audio: debriefLine3 },
-  { speaker: 'Robert', image: robert, text: "…some cases aren’t meant to be solved.", audio: debriefLine4 },
-  { speaker: 'Lucas', image: lucas, text: "You were there.", audio: debriefLine5 },
-  { speaker: 'Robert', image: robert, text: "...I was.", audio: debriefLine6 },
+  { speaker: 'Lucas', image: lucas, text: "I found them. Every single missing piece. The torn photos, the unaltered reports, the ledger... they all match.", audio: l4debrief1 },
+  { speaker: 'Robert', image: robert, text: "You actually did it. You collected the whole truth. But look at that final signature... now you see why I buried it.", audio: l4debrief2 },
+  { speaker: 'Lucas', image: lucas, text: "It goes all the way to the top. The entire precinct built its reputation on this silence.", audio: l4debrief3 },
+  { speaker: 'Robert', image: robert, text: "So, what's the move, Detective? Do we stamp it, neatly file it away... and let it be forgotten?", audio: l4debrief4 },
+  { speaker: 'Lucas', image: lucas, text: "No. The intro to this nightmare ends here.", audio: l4debrief5 },
+  { speaker: 'Lucas', image: lucas, text: "They said some things are better left untouched... but this case is finally closed.", audio: l4debrief6 },
 ];
 
 const LevelFourDebrief = ({ isMusicMuted, onToggleMusic }) => {
