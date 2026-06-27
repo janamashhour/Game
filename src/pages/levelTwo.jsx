@@ -215,7 +215,7 @@ const LevelTwo = ({ isMusicMuted, onToggleMusic }) => {
               <h3 className="failTitle">TOO MANY MISTAKES</h3>
               <p className="failText">You grabbed the wrong things.</p>
               <button className="splashBtn" onClick={(e) => { e.stopPropagation(); handleRestart(); }}>Try Again</button>
-              <button className="failMenuBtn" onClick={(e) => { e.stopPropagation(); navigate('/mainMenu'); }}>Main Menu</button>
+              <button className="level map" onClick={(e) => { e.stopPropagation(); navigate('/mainMenu'); }}>Main Menu</button>
             </>}
 
             {failReason === 'time' && <>

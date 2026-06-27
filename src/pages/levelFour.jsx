@@ -132,7 +132,7 @@ const LevelFour = ({ isMusicMuted, onToggleMusic }) => {
   if (showSuccess) return (
     <div className="l2SuccessPage" style={bgStyle}>
       <Header />
-      <div className="l2SuccessCard">
+      <div className="l2SuccessCard2">
         <h2 className="l2SuccessTitle">ALL EVIDENCE COLLECTED</h2>
         <div className="l2SuccessItems">
           {ITEMS.map(item => (
